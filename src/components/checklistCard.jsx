@@ -9,7 +9,6 @@ export default function ChecklistCard({ checklist, onDelete }) {
   const router = useRouter();
 
   const handleDelete = async () => {
-    e.preventDefault()
     const confirm = window.confirm('Yakin ingin menghapus checklist ini?');
     if (confirm) {
       const response = await fetchData('DELETE', `checklist/${checklist.id}`);
@@ -27,7 +26,7 @@ export default function ChecklistCard({ checklist, onDelete }) {
       <div onClick={() => router.push(`/dashboard`)} className="cursor-pointer">
         <h3 className="font-semibold">{checklist.name}</h3>
       </div>
-      <Button variant="destructive" size="sm" onClick={(e) => handleDelete(e)}>
+      <Button variant="destructive" size="sm" onClick={() => handleDelete()}>
         Hapus
       </Button>
     </Card>
